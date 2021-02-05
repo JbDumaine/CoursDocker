@@ -7,4 +7,5 @@ RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip setuptools
 RUN pip freeze > /requirements.txt
 RUN pip install Flask
+EXPOSE 5000
 CMD ["python","/app/app_test.py"]
