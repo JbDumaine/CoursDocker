@@ -1,8 +1,15 @@
 version: '3'
 services:
-  web:
-    build: ./
+  database:
+    image: mysql:lastest
     ports:
-     - "5000:5000"
-  redis:
-    image: "redis:alpine"
+        - "33061:3306"
+    command: --init-file /data/application/init.sql
+    volumes:
+        - ./bdd.sql:/data/application/init.sql
+    environment:
+        MYSQL_ROOT_USER: root
+        MYSQL_ROOT_PASSWORD: secret
+        MYSQL_DATABASE: tpmysql
+        MYSQL_USER: root
+        MYSQL_PASSWORD: secret

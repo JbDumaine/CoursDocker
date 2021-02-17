@@ -3,12 +3,12 @@ from flask import Flask
 from redis import Redis
 
 app = Flask(__name__)
-redis = Redis(host='redis-container', port=6379)
+redis = Redis(host='redis', port=6379)
 
 @app.route('/')
 def hello():
     redis.incr('hits')
-    return ' - - - This basic web page has been viewed {} time(s) - - -'.format(redis.get('hits'))
+    return ' - - - This basic blablabla web page has been viewed {} time(s) - - -'.format(redis.get('hits'))
 
 
 if __name__ == "__main__":

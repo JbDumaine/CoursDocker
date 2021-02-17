@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  database:
+    image: mysql:latest
+    restart: always
+    ports:
+      - 3306:3306
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./bdd.sql:/data/application/init.sql
+    environment:
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=mypass
+      - MYSQL_DATABASE=mydb
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    expose: 
+      - "3306"
+  web:
+    build: ./python_app/
+    depends_on: 
+      - database
+    volumes:
+     - "./python_app:/app:rw"
+    ports:
+      - "5000:5000"
