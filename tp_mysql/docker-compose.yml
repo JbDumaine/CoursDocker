@@ -9,10 +9,9 @@ services:
     volumes:
       - ./bdd.sql:/data/application/init.sql
     environment:
-      - MYSQL_USER=myuser
-      - MYSQL_PASSWORD=mypass
-      - MYSQL_DATABASE=mydb
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypass
+      MYSQL_DATABASE: mydb
     expose: 
       - "3306"
   web:
